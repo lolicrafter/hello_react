@@ -1,0 +1,11 @@
+.list{
+    height: 150px;
+    overflow-y: scroll;
+    background-color: skyblue;
+}
+.news{
+    height: 30px;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: flex-end;*/
+ }
