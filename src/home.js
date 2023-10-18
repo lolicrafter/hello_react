@@ -9,7 +9,8 @@ import TodoList from "./todoList";
 import Key from "./diffing/key";
 // import Axios from "./axios/index.js";
 import Users from "./github/users";
-const person = {
+import UsersPubsub from "./github/usersPubsub";
+ const person = {
     name: '张三1',
     // age: 8,
     // sex: '男'
@@ -22,7 +23,8 @@ setTimeout(() => {
 export default function home() {
     return (
         <div>
-            <Users />
+            <UsersPubsub />
+            {/*<Users />*/}
             {/*<Axios />*/}
             {/*<TodoList/>*/}
             {/*<Key />*/}
