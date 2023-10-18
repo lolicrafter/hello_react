@@ -31,7 +31,7 @@ class Item extends Component {
             <div style={{backgroundColor: backgroundColor,display:"flex",justifyContent:"center"}} onMouseEnter={() => this.handleMouse(true)}
                 onMouseLeave={() => this.handleMouse(false)}>
                 <label>
-                    <input type="checkbox" defaultChecked={done} onChange={e=>this.handleCheck(id,e)} />
+                    <input type="checkbox" checked={done} onChange={e=>this.handleCheck(id,e)} />
                     <span>{name}</span>
                 </label>
                 <button style={{display: mouse ? 'block' : 'none'}} onClick={()=>this.handleDelete(id)}>删除</button>

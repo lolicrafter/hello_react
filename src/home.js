@@ -7,7 +7,8 @@ import NewsList from "./life/demo";
 import Timer from "./diffing";
 import TodoList from "./todoList";
 import Key from "./diffing/key";
-
+// import Axios from "./axios/index.js";
+import Users from "./github/users";
 const person = {
     name: '张三1',
     // age: 8,
@@ -21,9 +22,11 @@ setTimeout(() => {
 export default function home() {
     return (
         <div>
-            <TodoList/>
+            <Users />
+            {/*<Axios />*/}
+            {/*<TodoList/>*/}
             {/*<Key />*/}
-            <Timer/>
+            {/*<Timer/>*/}
             {/*<NewsList />*/}
             {/*<Life />*/}
             {/*<Login />*/}

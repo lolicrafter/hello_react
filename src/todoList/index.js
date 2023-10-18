@@ -63,12 +63,33 @@ class Index extends Component {
             })
         }
     }
+    // 全选
+    handleCheckAll = (bool) => {
+        // console.log('handleCheckAll😊===》', e.target.checked)
+        const {todos} = this.state;
+        const newTodos = todos.map((item) => {
+            return {...item, done: bool}
+        })
+        this.setState({
+            todos: newTodos
+        })
+    }
+    // 清除已完成
+    handleClearAllDone = () => {
+        const {todos} = this.state;
+        const newTodos = todos.filter((item) => {
+            return !item.done
+        })
+        this.setState({
+            todos: newTodos
+        })
+    }
     render() {
         return (
             <div>
                 <Header headerInput={this.headerInput} />
                 <List handleDelete={this.handleDelete} updateTodo={this.updateTodo} todos={this.state.todos}/>
-                <Footer/>
+                <Footer todos={this.state.todos} handleCheckAll={this.handleCheckAll} handleClearAllDone={this.handleClearAllDone} />
             </div>
         );
     }
