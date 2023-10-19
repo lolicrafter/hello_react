@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import PubSub from 'pubsub-js'
+
 const url = 'https://api.github.com/search/users?q='
 
 
@@ -9,9 +10,42 @@ class Search extends Component {
         searchName: ''
     }
     // 搜索
-    search = () => {
+    search = async () => {
         PubSub.publish('search', {loading: true})
         const {searchRef: {value: searchName}} = this
+        // fetch 发送请求
+        try {
+         const response = await fetch(url + searchName)
+            const data = await response.json()
+            console.log('data😊===', data)
+            const {items, total_count} = data
+            PubSub.publish('search', {items, total_count})
+        } catch (error) {
+            PubSub.publish('search', {loading: false, errMessage: '请求出错' + error.message})
+        }
+        // fetch(url + searchName).then(
+        //     response => {
+        //         console.log('response😊===', response)
+        //         return response.json()
+        //     },
+        //     error => {
+        //         console.log('error😊===', error)
+        //
+        //     }
+        // ).then(
+        //     response => {
+        //         console.log('response11😊===', response)
+        //         const {items, total_count} = response
+        //         PubSub.publish('search', {items, total_count})
+        //     }
+        // ).catch(
+        //     error => {
+        //         console.log('error11😊===', error)
+        //         PubSub.publish('search', {loading: false, errMessage: '请求出错' + error.message})
+        //     }
+        // )
+
+        return
         // 发送请求
         axios.get(url + searchName).then(
             response => {
@@ -22,7 +56,7 @@ class Search extends Component {
         ).catch(
             error => {
                 console.log('error😊===', error)
-                PubSub.publish('search', {loading:false, errMessage: '请求出错' + error.message})
+                PubSub.publish('search', {loading: false, errMessage: '请求出错' + error.message})
             }
         )
     }
@@ -50,6 +84,7 @@ class List extends Component {
         users: [],
         total_count: 0
     }
+
     componentDidMount() {
         PubSub.unsubscribe('search');
         PubSub.subscribe('search', (msg, data) => {
@@ -93,12 +128,11 @@ class List extends Component {
 class Users extends Component {
 
 
-
     render() {
         return (
             <div>
-                <Search />
-                <List />
+                <Search/>
+                <List/>
                 github users
             </div>
         );

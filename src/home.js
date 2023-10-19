@@ -9,7 +9,8 @@ import TodoList from "./todoList";
 import Key from "./diffing/key";
 // import Axios from "./axios/index.js";
 import Users from "./github/users";
-import UsersPubsub from "./github/usersPubsub";
+// import UsersPubsub from "./github/usersPubsub";
+import TestRouter from "./testRouter/testRouter";
  const person = {
     name: '张三1',
     // age: 8,
@@ -23,7 +24,8 @@ setTimeout(() => {
 export default function home() {
     return (
         <div>
-            <UsersPubsub />
+            <TestRouter />
+            {/*<UsersPubsub />*/}
             {/*<Users />*/}
             {/*<Axios />*/}
             {/*<TodoList/>*/}
