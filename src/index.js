@@ -1,20 +1,27 @@
+import store from './redux/store';
+import ReactDOM from 'react-dom';
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Route, Switch, Link} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// 定义一个函数来重新渲染组件
+function render() {
+    root.render(
+        <React.StrictMode>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </React.StrictMode>
+    );
+}
+
+// 初始渲染
+render();
+
+// 使用 store.subscribe 来监听状态变化
+store.subscribe(() => {
+    // 状态发生变化时重新渲染组件
+    render();
+});

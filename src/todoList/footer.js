@@ -20,7 +20,7 @@ class Footer extends Component {
         return (
             <div>
                 <label >
-                    <input type="checkbox" checked={doneCount==todos.length&&total!=0} onChange={this.handleCheckAll} />
+                    <input type="checkbox" checked={doneCount===todos.length&&total!==0} onChange={this.handleCheckAll} />
                     <span>全选</span>
                 </label>
                 <span>已完成：{doneCount}</span>

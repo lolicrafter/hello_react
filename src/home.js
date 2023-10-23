@@ -11,6 +11,9 @@ import Key from "./diffing/key";
 import Users from "./github/users";
 // import UsersPubsub from "./github/usersPubsub";
 import TestRouter from "./testRouter/testRouter";
+// import Antd from "./antd";
+import ReduxPage from "./reduxPage";
+import ReduxCount from "./reduxPage/reduxCount";
  const person = {
     name: '张三1',
     // age: 8,
@@ -24,7 +27,10 @@ setTimeout(() => {
 export default function home() {
     return (
         <div>
-            <TestRouter />
+            <ReduxCount />
+            {/*<ReduxPage />*/}
+            {/*<Antd />*/}
+            {/*<TestRouter />*/}
             {/*<UsersPubsub />*/}
             {/*<Users />*/}
             {/*<Axios />*/}

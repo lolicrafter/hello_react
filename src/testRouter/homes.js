@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link, Redirect, Route, Switch} from "react-router-dom";
-import qs from 'querystring'
+// import qs from 'querystring'
 class MyNavLink extends Component {
     render() {
         return (
@@ -11,6 +11,13 @@ class MyNavLink extends Component {
 
 
 class News extends Component {
+
+    componentDidMount() {
+        setTimeout(()=>{
+            this.props.history.push('/homes/message/')
+        }
+        ,2000)
+    }
 
     render() {
         return (
@@ -97,8 +104,7 @@ class Message extends Component {
                 {/*<Route path="/homes/message/detail/:id/:title" component={MessageDetail}/>*/}
                 {/* search，state无需声明接受参数*/}
                 <Route path="/homes/message/detail" component={MessageDetail}/>
-                <h3 onClick={()=>this.props.history.goBack()}>回退</h3>
-                <h3 onClick={()=>this.props.history.goForward()}>前进</h3>
+
             </div>
         );
     }
@@ -139,7 +145,7 @@ class Homes extends Component {
                 <Switch>
                     <Route path="/homes/news" component={News}/>
                     <Route path="/homes/message" component={Message}/>
-                   < Redirect to="/homes/news" />  // 重定向
+                   < Redirect to="/homes/news" />
                 </Switch>
             </h2>
         );
