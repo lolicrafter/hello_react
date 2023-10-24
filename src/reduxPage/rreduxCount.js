@@ -1,8 +1,4 @@
 import React, {Component} from 'react';
-// 引入store
-import store from '../redux/store'
-// 引入actionCreator，专门用于创建action对象
-import {createIncrementAction, createDecrementAction, createIncrementAsyncAction} from '../redux/count_action'
 
 class Index extends Component {
 
@@ -15,28 +11,28 @@ class Index extends Component {
 
     increment = () => {
         const {value} = this.selectNum
-        store.dispatch(createIncrementAction(value*1))
-    }
+        this.props.jia(value*1)
+     }
     decrement = () => {
         const {value} = this.selectNum
-        store.dispatch(createDecrementAction(value*1))
-    }
+        this.props.jian(value*1)
+     }
     incrementOdd = () => {
         const {value} = this.selectNum
-        const count = store.getState()
-        // 判断是否为奇数
-        if(count%2!==0){
-            store.dispatch({type:'increment',data:value*1})
+        if(this.props.state % 2 !== 0){
+            this.props.jia(value*1)
         }
+
     }
     incrementSync = () => {
         const {value} = this.selectNum
-        store.dispatch(createIncrementAsyncAction(value*1,500))
-    }
+        this.props.jiaAsync(value*1,500)
+     }
     render() {
+        console.log('props😊===》',this.props)
         return (
             <div>
-                <h1>当前和为：{store.getState()}</h1>
+                <h1>当前和为：{this.props.state}</h1>
                 <select ref={c=>this.selectNum =c} name="" id="">
                     <option value="1">1</option>
                     <option value="2">2</option>

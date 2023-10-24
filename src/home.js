@@ -1,3 +1,4 @@
+
 import State from "./state/state";
 import Person from "./props/props";
 import Refs from "./refs/refs";
@@ -13,7 +14,10 @@ import Users from "./github/users";
 import TestRouter from "./testRouter/testRouter";
 // import Antd from "./antd";
 import ReduxPage from "./reduxPage";
-import ReduxCount from "./reduxPage/reduxCount";
+// import ReduxCount from "./reduxPage/reduxCount";
+import store from "./redux/store";
+
+import ReduxCount from "./reduxContainers/Count";
  const person = {
     name: '张三1',
     // age: 8,
