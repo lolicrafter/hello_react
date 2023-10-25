@@ -1,5 +1,5 @@
 
-import { INCREMENT, DECREMENT } from "./constant";
+import { INCREMENT, DECREMENT } from "../constant";
 function countReducer(preState = 0, action) {
   const { type, data } = action;
   switch (type) {

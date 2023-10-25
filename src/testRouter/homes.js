@@ -12,12 +12,12 @@ class MyNavLink extends Component {
 
 class News extends Component {
 
-    componentDidMount() {
-        setTimeout(()=>{
-            this.props.history.push('/homes/message/')
-        }
-        ,2000)
-    }
+    // componentDidMount() {
+    //     setTimeout(()=>{
+    //         this.props.history.push('/homes/message/')
+    //     }
+    //     ,2000)
+    // }
 
     render() {
         return (
@@ -135,7 +135,14 @@ class HomesNav extends Component {
 
 
 class Homes extends Component {
+
+    componentWillUnmount() {
+        console.log('Homes卸载😊===》',)
+    }
+
     render() {
+        console.log('Homes加载😊===》',)
+
         // console.log('props😊===》',this.props)
         return (
             <h2>
@@ -145,7 +152,7 @@ class Homes extends Component {
                 <Switch>
                     <Route path="/homes/news" component={News}/>
                     <Route path="/homes/message" component={Message}/>
-                   < Redirect to="/homes/news" />
+                   {/*< Redirect to="/homes/news" />*/}
                 </Switch>
             </h2>
         );

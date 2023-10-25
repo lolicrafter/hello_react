@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // 引入store
 import store from '../redux/store'
 // 引入actionCreator，专门用于创建action对象
-import {createIncrementAction, createDecrementAction, createIncrementAsyncAction} from '../redux/count_action'
+import {increment, decrement, incrementAsync} from '../redux/actions/count_action'
 
 class Index extends Component {
 
@@ -15,11 +15,11 @@ class Index extends Component {
 
     increment = () => {
         const {value} = this.selectNum
-        store.dispatch(createIncrementAction(value*1))
+        store.dispatch(increment(value*1))
     }
     decrement = () => {
         const {value} = this.selectNum
-        store.dispatch(createDecrementAction(value*1))
+        store.dispatch(decrement(value*1))
     }
     incrementOdd = () => {
         const {value} = this.selectNum
@@ -31,7 +31,7 @@ class Index extends Component {
     }
     incrementSync = () => {
         const {value} = this.selectNum
-        store.dispatch(createIncrementAsyncAction(value*1,500))
+        store.dispatch(incrementAsync(value*1,500))
     }
     render() {
         return (
