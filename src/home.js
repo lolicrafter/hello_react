@@ -29,7 +29,7 @@ import Content from "./Context";
 
 import Optimize from "./optimize";
 import RenderProps from "./renderProps";
-
+import ErrorBoundary from "./errorBoundary";
  const person = {
     name: '张三1',
     // age: 8,
@@ -43,7 +43,8 @@ setTimeout(() => {
 export default function home() {
     return (
         <>
-            <RenderProps />
+            <ErrorBoundary />
+            {/*<RenderProps />*/}
             {/*<Optimize />*/}
             {/*<Content />*/}
             {/*<Fragment />*/}
